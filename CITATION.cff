@@ -8,7 +8,8 @@ authors:
   - family-names: "Lee"
     given-names: "Sunghwa"
 version: "0.1.0"
-date-released: "2026-08-19"
+date-released: "2026-08-20"
+repository-code: "https://github.com/denkendorf/KeyRecon"
 license: "MIT"
 preferred-citation:
   type: article
