@@ -1,6 +1,12 @@
 {
   "keyrecon_version": "0.1.0",
   "reference_method": "Adaptive Composite Keyword Scoring (Adaptive CKS)",
+  "reference_publication": {
+    "authors": "Ryu and Lee",
+    "year": 2026,
+    "citation": "Ryu and Lee (2026)",
+    "title": "From Keyword Extraction to Keyword Reconstruction: Adaptive Composite Keyword Scoring for Recovering Missing Author Keywords"
+  },
   "english_reference": {
     "candidate_rule": {
       "canonical_sha256": "ea1fdf500e477a228e4c3a77fb7bcd846bebff7163b3ceb24880b09ff5be8b6e",

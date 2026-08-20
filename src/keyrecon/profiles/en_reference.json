@@ -3,6 +3,12 @@
   "status": "reference",
   "language": "en",
   "method": "Adaptive Composite Keyword Scoring (Adaptive CKS)",
+  "reference": {
+    "authors": "Ryu and Lee",
+    "year": 2026,
+    "citation": "Ryu and Lee (2026)",
+    "title": "From Keyword Extraction to Keyword Reconstruction: Adaptive Composite Keyword Scoring for Recovering Missing Author Keywords"
+  },
   "spacy": {
     "model": "en_core_web_trf",
     "model_version": "3.8.0",
