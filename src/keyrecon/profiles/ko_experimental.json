@@ -1,0 +1,14 @@
+{
+  "profile": "ko_experimental",
+  "status": "experimental",
+  "language": "ko",
+  "spacy": {
+    "model": "ko_core_news_lg"
+  },
+  "candidate_generation": {
+    "profile": "generic_experimental",
+    "min_units": 1,
+    "max_units": 4
+  },
+  "warning": "No official spaCy Korean transformer pipeline is currently listed; this adapter is experimental and should be independently validated."
+}

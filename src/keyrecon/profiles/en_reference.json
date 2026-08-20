@@ -1,0 +1,50 @@
+{
+  "profile": "en_reference",
+  "status": "reference",
+  "language": "en",
+  "method": "Adaptive Composite Keyword Scoring (Adaptive CKS)",
+  "spacy": {
+    "model": "en_core_web_trf",
+    "model_version": "3.8.0",
+    "reference_spacy_version": "3.8.14",
+    "device_in_reference_workflow": "CPU"
+  },
+  "candidate_generation": {
+    "public_name": "frozen source-aware candidate rule",
+    "fields": [
+      "TITLE",
+      "ABSTRACT"
+    ],
+    "generation": "independent_per_source",
+    "concatenate_before_generation": false,
+    "source_provenance_retained": true,
+    "title_score_bonus": false,
+    "min_lexical_units": 1,
+    "max_lexical_units": 4,
+    "canonical_rule_sha256": "ea1fdf500e477a228e4c3a77fb7bcd846bebff7163b3ceb24880b09ff5be8b6e",
+    "rule_file_sha256": "9e62070adf7b00e1a584c9e5e3caf337461389c13a9ec4bd5ca265232d9defd6"
+  },
+  "weights": {
+    "tfidf": 0.3588301778033513,
+    "df": 0.1395506716416042,
+    "dispersion": 0.123250779609562,
+    "domain_focus": 0.2152185351946644,
+    "phrase_quality": 0.163149835750818
+  },
+  "decision": {
+    "round_decimals": 12,
+    "threshold_rule": "rounded_score >= threshold",
+    "top_k": 10,
+    "general_package_policy": "calibrate threshold from development-only out-of-fold evidence",
+    "paper_reference_thresholds": {
+      "Corpus A": 0.45,
+      "Corpus B": 0.35
+    }
+  },
+  "canonical_mapping": {
+    "bundled": false,
+    "reason": "The full mapping contains corpus-derived candidate strings and is not distributed in the public code package.",
+    "file_sha256": "7e12d1a2c74dd34710d64d29b512876ac49ddef1f68a9417e0785dccdf02d61b",
+    "semantic_fingerprint": "a55d5b1ca6bd1eaf09d3ed8bcdd942c0d40471c6d866bfffec50be54304387ef"
+  }
+}

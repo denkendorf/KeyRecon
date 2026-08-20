@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use KeyRecon, please cite the software and the associated Adaptive CKS paper."
+title: "KeyRecon: Adaptive CKS for Author-Keyword Reconstruction"
+type: software
+authors:
+  - family-names: "Ryu"
+    given-names: "Byong-Rae"
+  - family-names: "Lee"
+    given-names: "Sunghwa"
+version: "0.1.0"
+date-released: "2026-08-19"
+license: "MIT"
+preferred-citation:
+  type: article
+  title: "From Keyword Extraction to Keyword Reconstruction: Adaptive Composite Keyword Scoring for Recovering Missing Author Keywords"
+  authors:
+    - family-names: "Ryu"
+      given-names: "Byong-Rae"
+    - family-names: "Lee"
+      given-names: "Sunghwa"

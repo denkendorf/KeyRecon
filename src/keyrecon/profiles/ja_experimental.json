@@ -1,0 +1,15 @@
+{
+  "profile": "ja_experimental",
+  "status": "experimental",
+  "language": "ja",
+  "spacy": {
+    "model": "ja_core_news_trf",
+    "recommended_model_version": "3.8.0"
+  },
+  "candidate_generation": {
+    "profile": "generic_experimental",
+    "min_units": 1,
+    "max_units": 4
+  },
+  "warning": "Not validated by the Adaptive CKS paper. Fit/calibrate on language-specific development data."
+}
