@@ -1,0 +1,78 @@
+name: Publish KeyRecon
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "GitHub Release tag to publish"
+        required: true
+        default: "v0.1.0"
+
+jobs:
+  prepare-distributions:
+    name: Prepare verified release distributions
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Download GitHub Release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          mkdir -p release_assets dist
+          gh release download "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --dir release_assets \
+            --pattern "keyrecon-*.whl" \
+            --pattern "keyrecon-*.tar.gz" \
+            --pattern "SHA256SUMS.txt"
+
+      - name: Show downloaded assets
+        run: |
+          ls -l release_assets
+
+      - name: Verify SHA256 checksums
+        working-directory: release_assets
+        run: |
+          sha256sum --check SHA256SUMS.txt
+
+      - name: Prepare PyPI distributions
+        run: |
+          cp release_assets/keyrecon-*.whl dist/
+          cp release_assets/keyrecon-*.tar.gz dist/
+          ls -l dist
+
+      - name: Upload verified distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-distributions
+          path: dist/
+          if-no-files-found: error
+
+  publish-testpypi:
+    name: Publish to TestPyPI
+    needs: prepare-distributions
+    runs-on: ubuntu-latest
+
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/keyrecon
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download verified distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: python-distributions
+          path: dist/
+
+      - name: Publish distributions to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          print-hash: true
