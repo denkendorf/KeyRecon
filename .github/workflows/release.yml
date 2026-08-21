@@ -7,6 +7,14 @@ on:
         description: "GitHub Release tag to publish"
         required: true
         default: "v0.1.0"
+      target:
+        description: "Package index to publish to"
+        required: true
+        type: choice
+        options:
+          - testpypi
+          - pypi
+        default: testpypi
 
 jobs:
   prepare-distributions:
@@ -54,12 +62,13 @@ jobs:
 
   publish-testpypi:
     name: Publish to TestPyPI
+    if: ${{ inputs.target == 'testpypi' }}
     needs: prepare-distributions
     runs-on: ubuntu-latest
 
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/keyrecon
+      url: https://test.pypi.org/project/keyrecon/
 
     permissions:
       id-token: write
@@ -75,4 +84,29 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
+          print-hash: true
+
+  publish-pypi:
+    name: Publish to PyPI
+    if: ${{ inputs.target == 'pypi' }}
+    needs: prepare-distributions
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+      url: https://pypi.org/project/keyrecon/
+
+    permissions:
+      id-token: write
+
+    steps:
+      - name: Download verified distributions
+        uses: actions/download-artifact@v8
+        with:
+          name: python-distributions
+          path: dist/
+
+      - name: Publish distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
           print-hash: true
