@@ -31,10 +31,11 @@ LANGUAGE_SPECS = {
     "ko": LanguageSpec(
         code="ko",
         label="Korean",
-        model="ko_core_news_lg",
-        status="experimental",
-        candidate_profile="generic_experimental",
-        expected_model_version=None,
+        model="kiwipiepy",
+        status="reference",
+        candidate_profile="ko_reference",
+        expected_model_version="0.23.2",
+        reference_spacy_version=None,
     ),
 }
 
@@ -50,8 +51,17 @@ def make_adapter(
     model_name: str | None = None,
     strict_reference: bool = False,
 ) -> LanguageAdapter:
+    spec = get_language_spec(language)
+
+    if spec.candidate_profile == "ko_reference":
+        raise RuntimeError(
+            "The authoritative Korean profile uses the dedicated "
+            "`KoreanAdaptiveCKS` runtime. Use `run_korean_adaptive()` "
+            "or `keyrecon run ... --lang ko`."
+        )
+
     return LanguageAdapter(
-        get_language_spec(language),
+        spec,
         model_name=model_name,
         strict_reference=strict_reference,
     )

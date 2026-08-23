@@ -1,0 +1,121 @@
+{
+  "schema_name": "keyrecon.ko_reference",
+  "schema_version": "1.0",
+  "reference_id": "ko_reference_v1",
+  "language": "ko",
+  "language_name": "Korean",
+  "authoritative": true,
+  "status": "FROZEN",
+  "source_project": "Korean KCI Full Adaptive CKS",
+  "profile": {
+    "configuration_id": "W034_S45",
+    "weights": {
+      "tfidf": 0.4152282333920128,
+      "df": 0.1598348330172827,
+      "dispersion": 0.0805437661577038,
+      "domain_focus": 0.1426596555299836,
+      "phrase_quality": 0.201733511903017
+    },
+    "minimum_cks_score": 0.45,
+    "decision_score_round_decimals": 12,
+    "inclusive_threshold_rule": "rounded_score >= minimum_cks_score",
+    "rank_order": "decision score descending, candidate canonical key ascending",
+    "top_k": 10
+  },
+  "analyzer": {
+    "name": "Kiwi",
+    "python_package": "kiwipiepy",
+    "required_version": "0.23.2"
+  },
+  "candidate_generation": {
+    "rule_family": "C09H_HYBRID_NOMINAL_EDGE1_SENTENCE_SAFE",
+    "full_development_edge_pairs": 64,
+    "rule_contract_asset": {
+      "file": "K18_runtime_candidate_rule_contract_v1_00.json",
+      "sha256": "b87f984a6c6eca47a02af533bb29dae1ea7296ba7aedbf68a859b150e35fbf48",
+      "size_bytes": 787
+    },
+    "edge_inventory_asset": {
+      "file": "K18_runtime_full_development_edge_inventory_v1_00.csv",
+      "sha256": "436216ff435b9f933fc93be9c4f651e2eb5c936feba0ea01a6dd509c500fc4af",
+      "size_bytes": 1254
+    }
+  },
+  "canonicalization": {
+    "contract_asset": {
+      "file": "K18_runtime_canonicalization_contract_v1_00.json",
+      "sha256": "4e79ac2c374e0eed5799079fad063b835e1095862fff3c719ce460c0ae6ace2b",
+      "size_bytes": 918
+    },
+    "primary_identity_preserves_internal_whitespace": true,
+    "compact_mapping_is_secondary_diagnostic": true
+  },
+  "components": {
+    "ordered_components": [
+      "tfidf",
+      "df",
+      "dispersion",
+      "domain_focus",
+      "phrase_quality"
+    ],
+    "feature_definition_contract_asset": {
+      "file": "K18_runtime_feature_definition_contract_v1_00.json",
+      "sha256": "02cf593971c9a381415e0e42364328c4222a26f4e6a39f60fc9df701535e636b",
+      "size_bytes": 2435
+    },
+    "runtime_resources": {
+      "tfidf_df_dispersion": {
+        "file": "K18_runtime_full_development_feature_resource_v1_00.csv",
+        "sha256": "274f16acb475344da172716152d110ab454ba6efb56ed76f4a7d0b4a2223a176",
+        "size_bytes": 30833745
+      },
+      "domain_focus": {
+        "file": "K18_runtime_domain_focus_resource_v1_00.csv",
+        "sha256": "3be3ca1048357feb17f6fe3499112e48a80ce97daae7a745297edd16d6d8c0c9",
+        "size_bytes": 93471
+      },
+      "phrase_quality": {
+        "file": "K18_runtime_phrase_quality_resource_v1_00.csv",
+        "sha256": "ef3371e935227cc85b1520327425b100bedaf7d46e1882eba194b2cbc3a81d4a",
+        "size_bytes": 888
+      }
+    },
+    "resource_fit_scope": {
+      "development_records": 748,
+      "validation_gold_used_for_resource_fit": false,
+      "heldout_gold_used_for_resource_fit": false
+    }
+  },
+  "generalization_evidence": {
+    "file": "K18_ko_reference_generalization_evidence_v1_00.json",
+    "sha256": "1f94e28758b0833b6cf373c15c3ed68ea5a186db56e76fdd3bff38f0918b7138",
+    "scope": "frozen core only"
+  },
+  "post_core_extension_policy": {
+    "authoritative_extensions_enabled": [],
+    "registry_file": "K18_ko_reference_extension_registry_v1_00.csv",
+    "registry_sha256": "bcea434aca8bad05ad23ea1390192edc1cac0356f3d6a486753687de82d9715f",
+    "k17g_policy": "CORE_ONLY_VALIDATED_PROFILE",
+    "note": "Semantic/dependency/source-position/latent evidence is preserved outside authoritative inference."
+  },
+  "provenance": {
+    "ledger_file": "K18_ko_reference_provenance_ledger_v1_00.csv",
+    "ledger_sha256": "90e3e0a8a4ad29fa8d0673d1dcd856c47a5741b9815ca3490f9138741ece5e01",
+    "asset_ledger_file": "K18_ko_reference_asset_ledger_v1_00.csv",
+    "asset_ledger_sha256": "755ea841be1e6ce233e632923aa29562cd3d30cabc869bce9ea04a3ae1f87362",
+    "k13_final_profile_unchanged": true,
+    "post_test_retuning": false,
+    "k17g_k18_ready": true
+  },
+  "deployment_contract": {
+    "input_fields": [
+      "title",
+      "abstract"
+    ],
+    "keyword_gold_required_at_inference": false,
+    "observed_author_keywords_required_at_inference": false,
+    "validation_or_heldout_gold_packaged": false,
+    "post_hoc_surface_filtering": false
+  },
+  "next_stage": "K19 KeyRecon Korean integration and end-to-end regression"
+}

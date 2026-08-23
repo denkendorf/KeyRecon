@@ -1,0 +1,32 @@
+{
+  "language": "ko",
+  "label": "Korean",
+  "status": "reference",
+  "candidate_profile": "ko_reference",
+  "reference_id": "ko_reference_v1",
+  "configuration_id": "W034_S45",
+  "runtime": {
+    "package": "kiwipiepy",
+    "required_version": "0.23.2"
+  },
+  "decision": {
+    "minimum_cks_score": 0.45,
+    "decision_score_round_decimals": 12,
+    "inclusive_threshold_rule": "rounded_score >= minimum_cks_score",
+    "top_k": 10
+  },
+  "weights": {
+    "tfidf": 0.4152282333920128,
+    "df": 0.1598348330172827,
+    "dispersion": 0.0805437661577038,
+    "domain_focus": 0.1426596555299836,
+    "phrase_quality": 0.201733511903017
+  },
+  "post_core_extensions_enabled": [],
+  "provenance": {
+    "source_stage": "K18",
+    "ko_reference_sha256": "c898bf2740b3028417837f854a4b455961c199e283fa02916c7f900a7e886266",
+    "source_level_parity_stage": "K19",
+    "k19_manifest_sha256": "58493c2c0200d0c14ed092de106119167cc2823a38ed669d7a4dd5cf2d5d01fb"
+  }
+}

@@ -143,3 +143,21 @@ See `CITATION.cff`.
 ## License
 
 MIT.
+
+## Korean authoritative reference (0.2.0)
+
+Install the frozen Korean reference runtime:
+
+```bash
+pip install 'keyrecon[korean]'
+```
+
+Run the authoritative Korean reference:
+
+```bash
+keyrecon run input.csv output.csv --lang ko --mode reference
+```
+
+`--mode adaptive` is retained for Korean as a compatibility alias for the same frozen `ko_reference_v1`; it does not refit weights or threshold.
+
+The existing English `en_reference` profile is unchanged.

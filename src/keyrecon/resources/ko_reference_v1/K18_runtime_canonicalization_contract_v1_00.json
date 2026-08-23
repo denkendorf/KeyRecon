@@ -1,0 +1,29 @@
+{
+  "stage_id": "K09",
+  "notebook_version": "v1.00",
+  "primary_identity": {
+    "name": "candidate_canonical_key",
+    "steps": [
+      "Unicode NFC",
+      "collapse and trim whitespace",
+      "Unicode casefold",
+      "preserve internal whitespace",
+      "preserve punctuation and symbols"
+    ],
+    "purpose": "primary candidate deduplication and primary gold matching"
+  },
+  "compact_alias": {
+    "name": "compact_mapping_key",
+    "steps": [
+      "primary canonical key",
+      "remove all whitespace"
+    ],
+    "purpose": "diagnostic whitespace-variation sensitivity only; NOT a primary deduplication identity",
+    "reason_not_primary": "whitespace removal can merge distinct observed gold items within the same record"
+  },
+  "linguistic_rewriting": false,
+  "stemming": false,
+  "lemmatization": false,
+  "punctuation_stripping": false,
+  "canonicalization_frozen": true
+}

@@ -1,0 +1,55 @@
+{
+  "stage_id": "K10",
+  "notebook_version": "v1.01",
+  "upstream_k09_version": "v1.03",
+  "development_target_input": "K09_development_oof_candidate_universe_frozen_v1_03.csv",
+  "fold_pure_corpus_resource_input": "K09_fold_pure_feature_resource_registry_v1_03.csv",
+  "deployment_refit_used_for_development_features": false,
+  "validation_heldout_opened": false,
+  "candidate_length": {
+    "definition": "number of tags in primary_pos_sequence from the frozen overlap-aware candidate span",
+    "length_bin_cap": 12
+  },
+  "tf": {
+    "count_in_doc": "total_occurrence_count",
+    "normalization": "within record and exact candidate_length: count_in_doc / sum(count_in_doc)"
+  },
+  "tfidf": {
+    "idf": "log((N_fit + 1) / (df_fit + 1)) + 1",
+    "raw": "tf * idf",
+    "feature": "min-max within target record"
+  },
+  "df": {
+    "feature": "log1p(df_fit) / log1p(N_fit)"
+  },
+  "dispersion": {
+    "T": "total_occurrences_fit",
+    "S": "sum_count_log_count_fit",
+    "entropy": "log(T) - S/T for T>0; otherwise 0",
+    "feature": "entropy / log(N_fit), clipped to [0,1]"
+  },
+  "domain_focus": {
+    "fit_source": "frozen gold from the other two OOF folds only; deduplicated by record_id + gold_canonical_key",
+    "domain_gold_df_fit": "number of fit records containing the gold canonical key",
+    "feature": "log1p(domain_gold_df_fit) / log1p(max_domain_gold_df_fit)"
+  },
+  "phrase_quality": {
+    "korean_adaptation": true,
+    "structural_prior": "fit-gold POS-category frequency normalized by the maximum POS-category frequency in the same fold-pure fit gold",
+    "length_prior": "fit-gold Kiwi token-length-bin frequency normalized by the maximum length-bin frequency in the same fold-pure fit gold",
+    "blend": "0.70 * structural_prior + 0.30 * length_prior",
+    "gold_tokenization": "Kiwi 0.23.2",
+    "hanja_sensitive_revision": "fit-gold priors are rebuilt from K06 v1.02 revised primary gold; Hanja-inclusive primary identities are not collapsed to Hangul-only aliases",
+    "generic_unicode_structural_quality": "diagnostic only; not used in the Korean core PhraseQuality"
+  },
+  "five_component_columns": [
+    "tfidf_feature",
+    "df_feature",
+    "dispersion_feature",
+    "domain_focus_feature",
+    "phrase_quality_feature"
+  ],
+  "score_or_weight_search_performed": false,
+  "threshold_search_performed": false,
+  "feature_definitions_frozen": true
+}

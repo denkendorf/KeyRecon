@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "keyrecon"
-version = "0.1.0"
+version = "0.2.0"
 description = "Author-keyword reconstruction with Adaptive Composite Keyword Scoring (Adaptive CKS)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -45,6 +45,9 @@ transformers = [
   "spacy>=3.8,<4",
   "spacy-transformers>=1.3,<2",
 ]
+korean = [
+  "kiwipiepy==0.23.2",
+]
 dev = [
   "pytest>=8,<10",
   "build>=1.2,<2",
@@ -61,7 +64,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-keyrecon = ["profiles/*.json"]
+keyrecon = ["profiles/*.json", "resources/ko_reference_v1/*.json", "resources/ko_reference_v1/*.csv"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,0 +1,22 @@
+{
+  "stage_id": "K09",
+  "notebook_version": "v1.03",
+  "selected_analyzer": {
+    "name": "kiwi",
+    "version": "0.23.2",
+    "frozen": true
+  },
+  "selected_rule_family": "C09H_HYBRID_NOMINAL_EDGE1_SENTENCE_SAFE",
+  "rule_structure_changed_from_k08_v1_02": false,
+  "post_hoc_hanja_exception_added": false,
+  "gold_derived_oof_edge_inventory_regenerated": true,
+  "full_development_refit_edge_inventory_regenerated": true,
+  "full_development_edge_pair_count": 64,
+  "selection_invariance_under_overlap_aware_semantics": {
+    "recommended_config": "C09H_HYBRID_NOMINAL_EDGE1_SENTENCE_SAFE",
+    "boundary_recall_pct": 99.205824,
+    "min_oof_fold_recall_pct": 98.568507,
+    "mean_surface_candidates_per_record": 956.647059
+  },
+  "candidate_rule_frozen": true
+}
