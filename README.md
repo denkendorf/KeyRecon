@@ -146,13 +146,28 @@ abstract
 author_keywords
 ```
 
-Example:
+Example (`input.csv`):
+
+The following synthetic example contains eight records with observed author
+keywords and two records requiring reconstruction. It meets the input-size
+requirement for the default three-fold fitting procedure. This example
+demonstrates the workflow; it is not a benchmark for reconstruction accuracy.
+
+The same data are available in
+[examples/synthetic_records.csv](examples/synthetic_records.csv).
 
 ```csv
 record_id,title,abstract,author_keywords
-d1,Sign language phonology,This paper studies phonological structure in sign language,sign language;phonology
-d2,Syntactic movement,We investigate long-distance movement and locality,movement;locality
-d3,Visual language structure,The analysis examines phonological patterning in a visual language,
+d01,Visual language structure,This study examines phonological organization in a visual language,visual language;phonological organization
+d02,Movement and locality,We analyze syntactic movement and locality constraints,movement;locality
+d03,Lexical representation,The article studies lexical representation and linguistic structure,lexical representation;linguistic structure
+d04,Prosodic patterning,We investigate prosodic patterning and rhythm,prosodic patterning;rhythm
+d05,Language variation,The paper examines language variation across communities,language variation;communities
+d06,Syntactic dependencies,This work analyzes long distance syntactic dependencies,syntactic dependencies
+d07,Phonological contrast,The analysis considers phonological contrast and feature organization,phonological contrast;feature organization
+d08,Acquisition patterns,We study acquisition patterns in linguistic development,acquisition patterns;linguistic development
+d09,Gesture and language,The study examines relationships between gesture and language,
+d10,Structural representation,We investigate structural representation in grammar,
 ```
 
 If `author_keywords` is present, records with nonblank author keywords are treated as
